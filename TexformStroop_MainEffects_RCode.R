@@ -115,7 +115,7 @@ SmallDistTex=distRankbyItem$Distance[distRankbyItem$objectCategory=='SmallObject
 BigDistTex=distRankbyItem$Distance[distRankbyItem$objectCategory=='BigObjects' & distRankbyItem$imageType=='Texforms']
 t.test(BigDistTex,SmallDistTex,var.equal=TRUE) 
 
-# Does perceived distance  predict perceived real-world size?
+# Does perceived distance predict perceived real-world size?
 distRankbyTexforms<-distRankbyItem[distRankbyItem$imageType=='Texforms',]
 distRankbyItemSorted=distRankbyTexforms[order(distRankbyTexforms$pairNum),]
 plot(sizeRankByItemSorted$sizeRank,distRankbyItemSorted$Dist)
@@ -135,7 +135,7 @@ SmallDepthOrig=depthRankbyItem$Depth[depthRankbyItem$objectCategory=='SmallObjec
 BigDepthOrig=depthRankbyItem$Depth[depthRankbyItem$objectCategory=='BigObjects' & depthRankbyItem$imageType=='Originals']
 t.test(BigDepthOrig,SmallDepthOrig,var.equal=TRUE) # for originals - difference.
 
-# Do big and small object texforms differ in perceived depth? (No)
+# Do big and small object texforms differ in depicted depth? (No)
 SmallDepthTex=depthRankbyItem$Depth[depthRankbyItem$objectCategory=='SmallObjects' & depthRankbyItem$imageType=='Texforms']
 BigDepthTex=depthRankbyItem$Depth[depthRankbyItem$objectCategory=='BigObjects' & depthRankbyItem$imageType=='Texforms']
 t.test(BigDepthTex,SmallDepthTex,var.equal=TRUE) # for texforms - no difference.
@@ -152,20 +152,20 @@ cor.test(DepthDiff,stroopByItem)
 
 ########## Perceived Curvature ######### 
 CurvDataFile="1-TurkJudgements/CurvatureJudgements.csv" 
-CurvData <- read.csv(CurvDataFile) # Load the curvatre judgement  data
+CurvData <- read.csv(CurvDataFile) # Load the curvatre judgementdata
 CurvRankbyItem <- aggregate(BoxyCurvy ~ pairNum + objectCategory + imageType, CurvData, mean) # aggregate by item x big/small
 
-# Do big and small objects differ in curvature
+# Do big and small objects differ in curvature?
 SmallCurvOrig=CurvRankbyItem$BoxyCurvy[CurvRankbyItem$objectCategory=='SmallObjects' & CurvRankbyItem$imageType=='Originals']
 BigCurvOrig=CurvRankbyItem$BoxyCurvy[CurvRankbyItem$objectCategory=='BigObjects' & CurvRankbyItem$imageType=='Originals']
 t.test(BigCurvOrig,SmallCurvOrig,var.equal=TRUE) 
 
-# Do big and small texforms differ in curvature
+# Do big and small texforms differ in curvature?
 SmallCurvTex=CurvRankbyItem$BoxyCurvy[CurvRankbyItem$objectCategory=='SmallObjects' & CurvRankbyItem$imageType=='Texforms']
 BigCurvTex=CurvRankbyItem$BoxyCurvy[CurvRankbyItem$objectCategory=='BigObjects' & CurvRankbyItem$imageType=='Texforms']
 t.test(BigCurvTex,SmallCurvTex,var.equal=TRUE) 
 
-# Does depicted depth predict perceived real-world size?
+# Does perceived curvature predict perceived real-world size? (yes)
 CurvRankTexforms<-CurvRankbyItem[CurvRankbyItem$imageType=='Texforms',]
 CurvRankByItemSorted=CurvRankTexforms[order(CurvRankTexforms$pairNum),]
 plot(CurvRankByItemSorted$BoxyCurvy,sizeRankByItemSorted$sizeRank)
